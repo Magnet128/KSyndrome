@@ -12,14 +12,12 @@
 </head>
 <meta charset="utf-8">
 
+
+	
 <body onload="fnGetList_init();">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">K-SYNDROME</a>
-        <form name="form1" onsubmit="return false;" method="post">
-            <input id="search_box" type="text">
-            <button onclick="fnGetList();">search</button>
-
-        </form>
+        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,7 +25,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item active">
                     <a class="nav-link" href="#">K-POP
-                        <span class="sr-only">(current)</span>
+                        
                     </a>
                 </li>
                 <li class="nav-item">
@@ -49,11 +47,20 @@
             </ul>
         </div>
     </nav>
+	
+		<form name="form1" onsubmit="return false;" method="post">
+            <input id="search_box" type="text">
+            <button onclick="search_click(); fnGetList();">search</button>
 
-	<title id='category'></title>
+        </form>
+
+	<h1><title id='category'></title>category</h1>
 </body>
 
-<div id="get_view"></div>
+<div id="div01">
+	<div id="get_view"></div>
+	</div>
+
 <div id="nav_view"></div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -64,15 +71,20 @@
 <!-- <script src="auth.js"></script> -->
 
 <script type="text/javascript" language="javascript">
+	var nextPT;
+	function search_click()
+	{
+		$("#get_view").empty();
+        $("#nav_view").empty();
+}
     function fnGetList(sGetToken) {
         var $getval = $('#search_box').val();
         if ($getval == "") {
-            alert("검색어를 입력하세요.");
+            alert("Please enter your keyword(s) to search.");
             $("#search_box").focus();
             return;
         }
-        $("#get_view").empty();
-        $("#nav_view").empty();
+        
         var sTargetUrl = "https://www.googleapis.com/youtube/v3/search?part=snippet&order=relevance&maxResults=15&type=video" +
             "&q=" + encodeURIComponent($getval) + "&key=AIzaSyBzqSUWSoxXt4LCufqNjfDmls2laxPMsBk";
         if (sGetToken) {
@@ -85,13 +97,14 @@
             success: function(jdata) {
                 console.log(jdata);
                 $(jdata.items).each(function(i) {
-                    $("#get_view").append("<p class='box'> <a href='https://youtu.be/" + this.id.videoId + "' target='_blank'><img src='" + this.snippet.thumbnails.high.url + "'/><span>" + this.snippet.title + "</span></a></p>")
+                    $("#get_view").append("<p class='box'> <a href='https://youtu.be/" + this.id.videoId + "' target='_self'><img src='" + this.snippet.thumbnails.default.url + "'/><span>" + this.snippet.title + "</span></a></p>")
                 }).promise().done(function() {
-                    if (jdata.prevPageToken) {
-                        $("#nav_view").append("<a href='javascript:fnGetList(\"" + jdata.prevPageToken + "\");'><이전페이지></a>");
-                    }
+                    // if (jdata.prevPageToken) {
+                    //     $("#nav_view").append("<a href='javascript:fnGetList(\"" + jdata.prevPageToken + "\");'><이전페이지></a>");
+                    // }
                     if (jdata.nextPageToken) {
-                        $("#nav_view").append("<a href='javascript:fnGetList(\"" + jdata.nextPageToken + "\");'><다음페이지></a>");
+						nextPT = jdata.nextPageToken;
+                        // $("#nav_view").append("<a href='javascript:fnGetList(\"" + jdata.nextPageToken + "\");'><다음페이지></a>");
                     }
                 });
             },
@@ -118,11 +131,30 @@
                 $(jdata.items).each(function(i) {
                     $("#get_view").append("<p class='box'> <a href='https://youtu.be/" + this.id.videoId + "' target='_self'><img src='" + this.snippet.thumbnails.default.url + "'/><span>" + this.snippet.title + "</span></a></p>")
                 }).promise().done(function() {
-                    if (jdata.prevPageToken) {
-                        $("#nav_view").append("<a href='javascript:fnGetList(\"" + jdata.prevPageToken + "\");'><이전페이지></a>");
-                    }
-                    if (jdata.nextPageToken) {
-                        $("#nav_view").append("<a href='javascript:fnGetList(\"" + jdata.nextPageToken + "\");'><다음페이지></a>");
+					
+					// $(document).ready(function(){
+					// 	//스크롤 발생 이벤트 처리
+					// 	$('#div01').scroll(function(){
+					// 		var scrollT = $(this).scrollTop(); //스크롤바의 상단위치
+					// 		var scrollH = $(this).height(); //스크롤바를 갖는 div의 높이
+					// 		var contentH = $('#divContent').height(); //문서 전체 내용을 갖는 div의 높이
+					// 		if(scrollT + scrollH +1 >= contentH) { // 스크롤바가 아래 쪽에 위치할 때
+					// 			$('#divContent').append(imgs);
+					// 		}
+					// 	});
+					// });
+
+					// if (jdata.nextPageToken) {
+					// $("#nav_view").append("<a href='javascript:fnGetList_init(\"" + jdata.nextPageToken + "\");'>/a>");
+					// }
+                //     if (jdata.prevPageToken) {
+                //         $("#nav_view").append("<button href='javascript:fnGetList_init(\"" + jdata.prevPageToken + "\");'><이전페이지></button>");
+                //     }
+                    if (jdata.nextPageToken) {						
+						nextPT = jdata.nextPageToken;
+                        // $("#nav_view").append("<a href='javascript:fnGetList(\"" + jdata.nextPageToken + "\");'><다음페이지></a>");
+                    
+                        // $("#nav_view").append("<a href='javascript:fnGetList_init(\"" + jdata.nextPageToken + "\");'><다음페이지></a>");
                     }
                 });
             },
@@ -133,6 +165,14 @@
             }
         });
     }
+	
+	$(window).scroll(function() { if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+		var $getval = $('#search_box').val();
+        if ($getval == "") {
+            fnGetList_init(nextPT);
+            return;
+        }
+		fnGetList(nextPT) } });
 </script>
 
 </html>
