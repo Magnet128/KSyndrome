@@ -1,178 +1,198 @@
-﻿<!doctype html>
+<!doctype html>
 <html>
 <link rel="stylesheet" href="style.css">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
 </head>
 <meta charset="utf-8">
 
+<body onload="fnGetList('KMUSIC.txt'); changeTilte('K-Syndrome K-MUSIC');">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#" id="title">K-Syndrome</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-	
-<body onload="fnGetList_init();">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">K-SYNDROME</a>
-        
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">K-POP
-                        
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">K-FOOD</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">K-BEAUTY</a>
-                </li>
-				<li class="nav-item">
-                    <a class="nav-link" href="#">K-TVSHOW</a>
-                </li>
-				<li class="nav-item">
-                    <a class="nav-link" href="#">K-TRADITION</a>
-                </li>
-				<li class="nav-item">
-                    <a class="nav-link" href="#">K-HISTORY</a>
-                </li>
-                
-            </ul>
-        </div>
-    </nav>
-	
-		<form name="form1" onsubmit="return false;" method="post">
-            <input id="search_box" type="text">
-            <button onclick="search_click(); fnGetList();">search</button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+					<a class="nav-link" href="#" onclick="fnGetList('KMUSIC.txt'); changeTilte('K-Syndrome K-MUSIC');">K-MUSIC
 
-        </form>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" onclick="fnGetList('KFOOD.txt'); changeTilte('K-Syndrome K-FOOD');">K-FOOD</a>
+				</li>				
+				<li class="nav-item">
+					<a class="nav-link" href="#" onclick="fnGetList('KBEAUTY.txt'); changeTilte('K-Syndrome K-BEAUTY');">K-BEAUTY</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" onclick="fnGetList('KTVSHOW.txt'); changeTilte('K-Syndrome K-TVSHOW');">K-TVSHOW</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" onclick="fnGetList('KSPORTS.txt'); changeTilte('K-Syndrome K-SPORTS');">K-SPORTS</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" onclick="fnGetList('KESPORTS.txt'); changeTilte('K-Syndrome K-eSPORTS');">K-eSPORTS</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" onclick="fnGetList('KOREAN LANGUAGE.txt'); changeTilte('K-Syndrome KOREAN LANGUAGE');">KOREAN LANGUAGE</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" onclick="fnGetList('KMOVIE.txt'); changeTilte('K-Syndrome K- MOVIE');">K-MOVIE</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" onclick="fnGetList('KDRAMA.txt'); changeTilte('K-Syndrome K- DRAMA');">K-DRAMA</a>
+				</li>
+				<!-- <li class="nav-item">
+					<a class="nav-link" href="#">K-HISTORY</a>
+				</li> -->
 
-	<h1><title id='category'></title>category</h1>
+    </ul>
+  </div>
+</nav>
+	<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">K-SYNDROME</a>
+
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">K-POP
+
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">K-FOOD</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">K-BEAUTY</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">K-TVSHOW</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">K-TRADITION</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">K-LANGUAGE</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">K-HISTORY</a>
+				</li>
+
+			</ul>
+		</div>
+	</nav> -->
+
+	<!-- <form name="form1" onsubmit="return false;" method="post">
+		<input id="search_box" type="text">
+		<button onclick="search_click(); fnGetList();">search</button>
+
+	</form> -->
+
+	<h5 id='category'>Latest update: 2020-06-29</h5>
 </body>
 
-<div id="div01">
-	<div id="get_view"></div>
-	</div>
 
+<div id="get_view"></div>
+<div id="get_view2"></div>
+	
 <div id="nav_view"></div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <!-- <script src="auth.js"></script> -->
 
 <script type="text/javascript" language="javascript">
 	var nextPT;
-	function search_click()
-	{
+
+	function search_click() {
 		$("#get_view").empty();
-        $("#nav_view").empty();
-}
-    function fnGetList(sGetToken) {
-        var $getval = $('#search_box').val();
-        if ($getval == "") {
-            alert("Please enter your keyword(s) to search.");
-            $("#search_box").focus();
-            return;
-        }
-        
-        var sTargetUrl = "https://www.googleapis.com/youtube/v3/search?part=snippet&order=relevance&maxResults=15&type=video" +
-            "&q=" + encodeURIComponent($getval) + "&key=AIzaSyBzqSUWSoxXt4LCufqNjfDmls2laxPMsBk";
-        if (sGetToken) {
-            sTargetUrl += "&pageToken=" + sGetToken;
-        }
-        $.ajax({
-            type: "POST",
-            url: sTargetUrl,
-            dataType: "jsonp",
-            success: function(jdata) {
-                console.log(jdata);
-                $(jdata.items).each(function(i) {
-                    $("#get_view").append("<p class='box'> <a href='https://youtu.be/" + this.id.videoId + "' target='_self'><img src='" + this.snippet.thumbnails.default.url + "'/><span>" + this.snippet.title + "</span></a></p>")
-                }).promise().done(function() {
-                    // if (jdata.prevPageToken) {
-                    //     $("#nav_view").append("<a href='javascript:fnGetList(\"" + jdata.prevPageToken + "\");'><이전페이지></a>");
-                    // }
-                    if (jdata.nextPageToken) {
-						nextPT = jdata.nextPageToken;
-                        // $("#nav_view").append("<a href='javascript:fnGetList(\"" + jdata.nextPageToken + "\");'><다음페이지></a>");
-                    }
-                });
-            },
-            error: function(xhr, textStatus) {
-                console.log(xhr.responseText);
-                alert("에러");
-                return;
-            }
-        });
-    }
-
-    function fnGetList_init(sGetToken) {
-        var sTargetUrl = "https://www.googleapis.com/youtube/v3/search?part=snippet&order=relevance&maxResults=15&type=video" +
-            "&q=" + "kpop" + "&key=AIzaSyBzqSUWSoxXt4LCufqNjfDmls2laxPMsBk";
-        if (sGetToken) {
-            sTargetUrl += "&pageToken=" + sGetToken;
-        }
-        $.ajax({
-            type: "POST",
-            url: sTargetUrl,
-            dataType: "jsonp",
-            success: function(jdata) {
-                console.log(jdata);
-                $(jdata.items).each(function(i) {
-                    $("#get_view").append("<p class='box'> <a href='https://youtu.be/" + this.id.videoId + "' target='_self'><img src='" + this.snippet.thumbnails.default.url + "'/><span>" + this.snippet.title + "</span></a></p>")
-                }).promise().done(function() {
-					
-					// $(document).ready(function(){
-					// 	//스크롤 발생 이벤트 처리
-					// 	$('#div01').scroll(function(){
-					// 		var scrollT = $(this).scrollTop(); //스크롤바의 상단위치
-					// 		var scrollH = $(this).height(); //스크롤바를 갖는 div의 높이
-					// 		var contentH = $('#divContent').height(); //문서 전체 내용을 갖는 div의 높이
-					// 		if(scrollT + scrollH +1 >= contentH) { // 스크롤바가 아래 쪽에 위치할 때
-					// 			$('#divContent').append(imgs);
-					// 		}
-					// 	});
-					// });
-
-					// if (jdata.nextPageToken) {
-					// $("#nav_view").append("<a href='javascript:fnGetList_init(\"" + jdata.nextPageToken + "\");'>/a>");
-					// }
-                //     if (jdata.prevPageToken) {
-                //         $("#nav_view").append("<button href='javascript:fnGetList_init(\"" + jdata.prevPageToken + "\");'><이전페이지></button>");
-                //     }
-                    if (jdata.nextPageToken) {						
-						nextPT = jdata.nextPageToken;
-                        // $("#nav_view").append("<a href='javascript:fnGetList(\"" + jdata.nextPageToken + "\");'><다음페이지></a>");
-                    
-                        // $("#nav_view").append("<a href='javascript:fnGetList_init(\"" + jdata.nextPageToken + "\");'><다음페이지></a>");
-                    }
-                });
-            },
-            error: function(xhr, textStatus) {
-                console.log(xhr.responseText);
-                alert("에러");
-                return;
-            }
-        });
-    }
+		$("#nav_view").empty();
+	}
 	
-	$(window).scroll(function() { if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-		var $getval = $('#search_box').val();
-        if ($getval == "") {
-            fnGetList_init(nextPT);
-            return;
-        }
-		fnGetList(nextPT) } });
+	function shuffle(a) { 
+		var j, x, i; for (i = a.length; i; i -= 1) 
+		{ 
+			j = Math.floor(Math.random() * i); 
+			x = a[i - 1]; 
+			a[i - 1] = a[j]; 
+			a[j] = x; 
+		} 
+		
+		var b = a;
+		return b;
+	}
+	
+	function changeTilte(title)
+	{
+		document.getElementById("title").innerHTML = title;
+	}
+
+
+	function fnGetList(sTargetUrl) {
+		// var $getval = $('#search_box').val();
+		// if ($getval == "") {
+		// 	alert("Please enter your keyword(s) to search.");
+		// 	$("#search_box").focus();
+		// 	return;
+		// }
+		// var sTargetUrl = "KMUSIC.txt";
+		// if (sGetToken) {
+		// 	sTargetUrl += "&pageToken=" + sGetToken;
+		// }
+		$("#get_view").empty();
+		$("#get_view2").empty();
+		
+		$.ajax({
+			url: sTargetUrl,
+			dataType: "text",
+			success: function(data) {
+				var allRows = data.split(/\r?\n|\r/);
+				
+				allRows = shuffle(allRows);
+				
+				for (var singleRow = 0; singleRow < allRows.length; singleRow++) 
+				{					
+					if(singleRow % 2 == 0)
+					{
+							var rowCells = allRows[singleRow].split(',');
+					$("#get_view").append("<p id='box'><a href='https://youtu.be/" + rowCells[0] + "' target='_self'><img src='" + rowCells[1] + "'/>" + rowCells[2] + "</a></p>");
+					}
+					else{
+						var rowCells = allRows[singleRow].split(',');
+					$("#get_view2").append("<p id='box'><a href='https://youtu.be/" + rowCells[0] + "' target='_self'><img src='" + rowCells[1] + "'/>" + rowCells[2] + "</a></p>");
+						
+					}	
+				}
+			},
+			error: function(xhr, textStatus) {
+				console.log(xhr.responseText);
+				alert("Error");
+				return;
+			}
+		});
+		
+		
+	}
+	
+	function loadData(data)
+	{
+		
+	}
 </script>
 
 </html>
